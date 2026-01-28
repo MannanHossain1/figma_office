@@ -38,4 +38,11 @@ class OnboardingController extends GetxController {
       Get.offNamed(AppRoutes.login);
     }
   }
+  void previousPage() {
+
+      pageController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+  }
 }

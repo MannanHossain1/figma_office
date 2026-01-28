@@ -10,7 +10,8 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = Get.put(SplashController());
+    // ignore: unused_local_variable
+    final controller = Get.put(SplashController());
     return Scaffold(backgroundColor: Color(0xFF001B36),
     body: SafeArea(
         child: Padding(

@@ -3,12 +3,12 @@ import 'package:b_potash/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PrimaryButton extends StatelessWidget {
+class SecondaryButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final bool isOutlined;
 
-  const PrimaryButton({
+  const SecondaryButton({
     super.key,
     required this.text,
     required this.onPressed,
@@ -24,8 +24,10 @@ class PrimaryButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           shadowColor: Colors.transparent,
-          backgroundColor: isOutlined ? Colors.white : AppColors.primary,
-          foregroundColor: AppColors.textWhite,
+          backgroundColor: isOutlined
+              ? AppColors.primary
+              : AppColors.textSecondary.withValues(alpha: .04),
+          foregroundColor: AppColors.textSecondary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
             side: isOutlined
@@ -34,7 +36,12 @@ class PrimaryButton extends StatelessWidget {
           ),
           elevation: 0,
         ),
-        child: CustomText(text: text, fontSize: 16, fontWeight: .w700),
+        child: CustomText(
+          text: text,
+          fontSize: 16,
+          fontWeight: .w700,
+          color: AppColors.textSecondary,
+        ),
       ),
     );
   }

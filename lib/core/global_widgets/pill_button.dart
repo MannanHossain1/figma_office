@@ -1,14 +1,13 @@
-import 'package:b_potash/core/global_widgets/custom_text.dart';
 import 'package:b_potash/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PrimaryButton extends StatelessWidget {
+class PillButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final bool isOutlined;
 
-  const PrimaryButton({
+  const PillButton({
     super.key,
     required this.text,
     required this.onPressed,
@@ -18,8 +17,7 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: 56,
+      height: 60,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -27,14 +25,14 @@ class PrimaryButton extends StatelessWidget {
           backgroundColor: isOutlined ? Colors.white : AppColors.primary,
           foregroundColor: AppColors.textWhite,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(100),
             side: isOutlined
                 ? BorderSide(color: AppColors.primary)
                 : BorderSide.none,
           ),
           elevation: 0,
         ),
-        child: CustomText(text: text, fontSize: 16, fontWeight: .w700),
+        child: Text(text, style: GoogleFonts.inter(fontSize: 14,fontWeight: .w700, color: AppColors.textWhite),)
       ),
     );
   }

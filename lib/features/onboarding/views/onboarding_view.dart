@@ -1,5 +1,5 @@
 import 'package:b_potash/core/global_widgets/circle_button.dart';
-import 'package:b_potash/core/global_widgets/primary_button.dart';
+import 'package:b_potash/core/global_widgets/pill_button.dart';
 import 'package:b_potash/core/utils/constants/app_colors.dart';
 import 'package:b_potash/features/onboarding/controllers/onboarding_controller.dart';
 import 'package:flutter/material.dart';
@@ -13,55 +13,70 @@ class OnboardingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Center(
-            child: Column(
-              crossAxisAlignment: .center,
-              children: [
-                Expanded(
-                  child: PageView.builder(
-                    controller: _controller.pageController,
-                    itemCount: _controller.onboardingData.length,
-                    onPageChanged: _controller.onPageChanged,
-                    itemBuilder: (context, index) {
-                      return page(_controller.onboardingData[index]);
-                    },
+      body: Container(
+        decoration: BoxDecoration(gradient: AppColors.linearGradient),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Center(
+              child: Column(
+                crossAxisAlignment: .center,
+                children: [
+                  Expanded(
+                    child: PageView.builder(
+                      controller: _controller.pageController,
+                      itemCount: _controller.onboardingData.length,
+                      onPageChanged: _controller.onPageChanged,
+                      itemBuilder: (context, index) {
+                        return page(_controller.onboardingData[index]);
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(height: 20),
-                Obx(
-                  () => Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: List.generate(
-                      _controller.onboardingData.length,
-                      (index) => AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        margin: const EdgeInsets.symmetric(horizontal: 5),
-                        height: 10,
-                        width: _controller.pageIndex.value == index ? 30 : 10,
-                        decoration: BoxDecoration(
-                          color: _controller.pageIndex.value == index
-                              ? AppColors.primary
-                              : AppColors.primary.withValues(alpha: 0.2),
-                          borderRadius: BorderRadius.circular(8),
+                  SizedBox(height: 20),
+                  Obx(
+                    () => Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: List.generate(
+                        _controller.onboardingData.length,
+                        (index) => AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          margin: const EdgeInsets.symmetric(horizontal: 5),
+                          height: 10,
+                          width: _controller.pageIndex.value == index ? 30 : 10,
+                          decoration: BoxDecoration(
+                            color: _controller.pageIndex.value == index
+                                ? AppColors.primary
+                                : AppColors.primary.withValues(alpha: 0.2),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: .end,
-                  children: [
-                    CircleButton(
-                      iconImage: 'assets/icons/onboarding_next.svg',
-                      onPressed: _controller.nextPage,
-                      isOutlined: false,
+          
+                  SizedBox(height: 30,), 
+                  Obx(
+                    ()=> Row(
+                      mainAxisAlignment: .spaceBetween,
+                      children: [
+          
+                        _controller.pageIndex.value !=
+                                  0 ? CircleButton(
+                          iconImage: 'assets/icons/onboarding_previous.svg',
+                          onPressed: _controller.previousPage,
+                          isOutlined: true,
+                        ): Spacer(),
+                        _controller.pageIndex.value ==
+                                  _controller.onboardingData.length - 1 ? PillButton(text: 'Get Started', onPressed: _controller.nextPage, isOutlined: false,): CircleButton(
+                          iconImage: 'assets/icons/onboarding_next.svg',
+                          onPressed: _controller.nextPage,
+                          isOutlined: false,
+                        )
+                      ],
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

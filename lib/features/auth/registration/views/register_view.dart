@@ -3,16 +3,16 @@ import 'package:b_potash/core/global_widgets/custom_text.dart';
 import 'package:b_potash/core/global_widgets/custom_textfield.dart';
 import 'package:b_potash/core/global_widgets/primary_button.dart';
 import 'package:b_potash/core/utils/constants/app_colors.dart';
-import 'package:b_potash/features/auth/login/controllers/login_controller.dart';
+import 'package:b_potash/features/auth/registration/controllers/register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class RegisterView extends StatelessWidget {
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginController());
+    final controller = Get.put(RegisterController());
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(gradient: AppColors.linearGradient),
@@ -27,14 +27,14 @@ class LoginView extends StatelessWidget {
                   Image.asset('assets/logos/app_logo.png', height: 40),
                   SizedBox(height: 10),
                   CustomText(
-                    text: 'Sign In Account',
+                    text: 'Create An Account',
                     color: AppColors.primary,
                     fontWeight: .w800,
                   ),
                   SizedBox(height: 10),
                   CustomText(
                     text:
-                        'Start your journey in playmate with fun, interactive lessons now',
+                        'Create your account to get into the unlimited options of payments & convenience.',
                     color: AppColors.textSecondary.withValues(alpha: .4),
                     textAlign: .center,
                     fontSize: 14,
@@ -42,11 +42,16 @@ class LoginView extends StatelessWidget {
                   ),
                   SizedBox(height: 38),
                   CustomTextfield(
+                    hintText: 'Enter your full name here',
+                    isObscure: false,
+                    headertext: 'Full Name',
+                  ),
+                  height20(),
+                  CustomTextfield(
                     hintText: 'Enter your email here',
                     isObscure: false,
                     headertext: 'Email',
                   ),
-                  // SizedBox(height: 20),
                   height20(),
                   Obx(
                     () => CustomTextfield(
@@ -67,48 +72,7 @@ class LoginView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  height10(),
-                  Row(
-                    mainAxisAlignment: .spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Obx(
-                            () => Checkbox(
-                              side: BorderSide(
-                                color: AppColors.primary.withValues(alpha: .4),
-                                width: 1.5,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              activeColor: AppColors.primary,
-                              value: controller.isRememberMe.value,
-                              onChanged: (value) {
-                                controller.toggleRememberMe();
-                              },
-                            ),
-                          ),
-                          CustomText(
-                            text: 'Remember Me',
-                            fontSize: 14,
-                            fontWeight: .w500,
-                            color: AppColors.textThird,
-                          ),
-                        ],
-                      ),
 
-                      TextButton(
-                        onPressed: controller.navigateToForgotPass,
-                        child: CustomText(
-                          text: 'Forgot Password?',
-                          fontSize: 14,
-                          fontWeight: .w500,
-                          color: AppColors.textThird,
-                        ),
-                      ),
-                    ],
-                  ),
                   Spacer(),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -121,10 +85,10 @@ class LoginView extends StatelessWidget {
                       color: AppColors.textSecondary,
                     ),
                   ),
-                  height10(),
+                  height20(),
                   PrimaryButton(
-                    text: 'Sign In',
-                    onPressed: controller.nextPage,
+                    text: 'Sign Up',
+                    onPressed: controller.onTapRegister,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -133,16 +97,16 @@ class LoginView extends StatelessWidget {
                       children: [
                         CustomText(
                           overflow: .clip,
-                          text: 'Don\'t have an account? ',
+                          text: 'Already have an account? ',
                           fontSize: 12,
                           fontWeight: .w400,
                           color: AppColors.textSecondary,
                         ),
                         InkWell(
-                          onTap: controller.navigateToRegister,
+                          onTap: controller.navigateToLogin,
                           child: CustomText(
                             overflow: .clip,
-                            text: 'Sign Up',
+                            text: 'Log In',
                             fontSize: 12,
                             fontWeight: .w400,
                             color: AppColors.primary,

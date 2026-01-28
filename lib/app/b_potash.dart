@@ -13,9 +13,10 @@ class BPotash extends StatelessWidget {
       initialRoute: AppRoutes.init,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: AppColors.primaryBackGround
+        scaffoldBackgroundColor: AppColors.secondary,
+        primaryColor: AppColors.primary,
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
       ),
     );
   }
 }
-

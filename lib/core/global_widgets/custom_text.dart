@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PrimaryText extends StatelessWidget {
+class CustomText extends StatelessWidget {
   final String text;
   final double fontSize;
   final FontWeight? fontWeight;
@@ -11,10 +11,10 @@ class PrimaryText extends StatelessWidget {
   final int? maxLines;
   final double? height;
 
-  const PrimaryText(String s, {
+  const CustomText({
     super.key,
     required this.text,
-    this.fontSize = 14,
+    this.fontSize = 24,
     this.fontWeight,
     this.color,
     this.textAlign,
@@ -33,7 +33,7 @@ class PrimaryText extends StatelessWidget {
       style: GoogleFonts.inter(
         fontSize: fontSize,
         fontWeight: fontWeight ?? FontWeight.normal,
-        color: color ?? Colors.black,
+        color: color ?? Colors.white,
         height: height,
       ),
     );
