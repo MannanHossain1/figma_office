@@ -1,7 +1,7 @@
 import 'package:b_potash/core/global_widgets/custom_text.dart';
 import 'package:b_potash/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class SecondaryButton extends StatelessWidget {
   final String text;

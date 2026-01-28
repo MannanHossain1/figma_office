@@ -3,18 +3,18 @@ import 'package:b_potash/core/global_widgets/custom_text.dart';
 import 'package:b_potash/core/global_widgets/primary_button.dart';
 import 'package:b_potash/core/global_widgets/secondary_button.dart';
 import 'package:b_potash/core/utils/constants/app_colors.dart';
-import 'package:b_potash/features/auth/registration/controllers/register_verify_controller.dart';
+import 'package:b_potash/features/auth/registration/controllers/otpVerifyController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 
-class RegisterVerifyView extends StatelessWidget {
-  const RegisterVerifyView({super.key});
+class OtpVerifyView extends StatelessWidget {
+  const OtpVerifyView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RegisterVerifyController());
+    final controller = Get.put(Otpverifycontroller());
 
     final defaultPinTheme = PinTheme(
       height: 60,
