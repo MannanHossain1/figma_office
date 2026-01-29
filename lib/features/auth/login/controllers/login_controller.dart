@@ -21,7 +21,7 @@ class LoginController extends GetxController {
     // Get.to(RegisterView());
   }
   void navigateToRegister() {
-    Get.toNamed(AppRoutes.register);
+    // Get.toNamed(AppRoutes.register);
   }
 
   void navigateToForgotPass() {

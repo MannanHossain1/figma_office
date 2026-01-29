@@ -14,7 +14,7 @@ class RegisterController extends GetxController {
   }
 
   void onTapRegister() {
-    Get.toNamed(AppRoutes.otpVerify);
+    // Get.toNamed(AppRoutes.otpVerify);
   }
 
   void navigateToLogin() {

@@ -6,7 +6,7 @@ class Otpverifycontroller extends GetxController {
   final otpController = TextEditingController();
 
   void onTapApply() {
-    Get.toNamed(AppRoutes.otpVerifySuccess);
+    // Get.toNamed(AppRoutes.otpVerifySuccess);
   }
 
   void onTapSendOtp() {}

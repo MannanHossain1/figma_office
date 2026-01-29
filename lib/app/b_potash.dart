@@ -1,22 +1,28 @@
+import 'package:b_potash/core/app_routes/app_route_pages.dart';
+import 'package:b_potash/core/exported_files/exported_file.dart';
 import 'package:b_potash/core/routes/app_routes.dart';
-import 'package:b_potash/core/utils/constants/app_colors.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class BPotash extends StatelessWidget {
   const BPotash({super.key});
 
   @override
   Widget build(BuildContext context) {
+    ScreenSize.init(context);
     return GetMaterialApp(
-      getPages: AppRoutes.routes,
-      initialRoute: AppRoutes.init,
+      initialBinding: AppBindings(),
+      initialRoute: AppRoutePaths.splashScreen,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: AppColors.secondary,
-        primaryColor: AppColors.primary,
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
-      ),
+      theme: AppThemes.lightThemeData,
+      builder: EasyLoading.init(),
+      getPages: AppRoutePages.pages.entries
+          .map(
+            (entry) => GetPage(
+              name: entry.key,
+              page: entry.value.page,
+              binding: entry.value.binding,
+            ),
+          )
+          .toList(),
     );
   }
 }

@@ -10,24 +10,30 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    final controller = Get.put(SplashController());
-    return Scaffold(backgroundColor: Color(0xFF001B36),
-    body: SafeArea(
+    final controller = Get.find<SplashController>();
+    return Scaffold(
+      backgroundColor: Color(0xFF001B36),
+      body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Center(
             child: Column(
               children: [
                 Spacer(),
-                Image.asset('assets/logos/app_logo.png', height: 171, width: 171),
+                // responsivei
+                Image.asset(
+                  'assets/logos/app_logo.png',
+                  height: 171,
+                  width: 171,
+                ),
                 Spacer(),
-                SpinKitCircle(color: AppColors.textWhite,size: 68),
-                SizedBox(height: 48,)
+                SpinKitCircle(color: AppColors.textWhite, size: 68),
+                SizedBox(height: 48),
               ],
             ),
           ),
         ),
-      ),);
+      ),
+    );
   }
 }
