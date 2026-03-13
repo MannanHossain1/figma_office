@@ -1,3 +1,5 @@
+// sample of all common widgets how use that
+
 import '../../../core/exported_files/exported_file.dart';
 
 class SampleScreen extends StatefulWidget {
