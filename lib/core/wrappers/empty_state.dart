@@ -26,7 +26,7 @@ class EmptyState extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: ScreenSize.setWidth(24),
-          vertical: ScreenSize.setHeight(20),
+          vertical: ScreenSize.setHeight(16),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -90,4 +90,3 @@ class EmptyState extends StatelessWidget {
     );
   }
 }
-
