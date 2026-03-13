@@ -1,6 +1,6 @@
 // sample of all common widgets how use that
 import '../../../core/exported_files/exported_file.dart';
-import '../../commmon/view/widgets/common_appbar.dart';
+import '../../common/widgets/common_appbar.dart';
 import '../widgets/sample_actions_showcase_widget.dart';
 import '../widgets/sample_content_showcase_widget.dart';
 import '../widgets/sample_form_showcase_widget.dart';

@@ -1,7 +1,7 @@
 import '../../../core/exported_files/exported_file.dart';
 import '../../../core/pagination/pagination_controller.dart';
 import '../models/sample_model.dart';
-import '../service/sample_paginated_service.dart';
+import '../services/sample_paginated_service.dart';
 
 class SampleController extends PaginationController<SampleData> {
   final SamplePaginatedService _service = Get.find<SamplePaginatedService>();

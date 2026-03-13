@@ -1,4 +1,4 @@
-import '../../../../core/exported_files/exported_file.dart';
+import '../../../core/exported_files/exported_file.dart';
 
 class AppBarBackButton extends StatelessWidget {
   const AppBarBackButton({super.key, this.onTapBack});

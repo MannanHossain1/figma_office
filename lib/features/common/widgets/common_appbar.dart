@@ -1,5 +1,5 @@
 import 'package:b_potash/core/exported_files/exported_file.dart';
-import 'package:b_potash/features/commmon/view/widgets/app_bar_back_button.dart';
+import 'package:b_potash/features/common/widgets/app_bar_back_button.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CommonAppBar({
