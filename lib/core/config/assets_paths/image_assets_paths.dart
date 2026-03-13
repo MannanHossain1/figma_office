@@ -1,6 +1,4 @@
-﻿
-
-import 'package:b_potash/core/config/assets_paths/base_assets_path.dart';
+﻿import 'package:b_potash/core/config/assets_paths/base_assets_path.dart';
 
 class ImageAssetsPaths {
   ImageAssetsPaths._internal();

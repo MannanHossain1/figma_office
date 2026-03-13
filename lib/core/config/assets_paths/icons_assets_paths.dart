@@ -5,4 +5,7 @@ class IconsAssetsPaths {
 
   static final String arrowBack = BaseAssetsPath.iconPth("arrow_back.png");
   static final String search = BaseAssetsPath.iconPth("search.svg");
+  static final String star = BaseAssetsPath.iconPth("star.svg");
+  static final String starFill = BaseAssetsPath.iconPth("star_fill.svg");
+
 }

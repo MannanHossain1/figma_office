@@ -1,7 +1,5 @@
-﻿import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import 'package:b_potash/core/helpers/responsive/screen_size.dart';
+﻿import '../exported_files/exported_file.dart';
+import '../services/translator_services/translator_service.dart';
 
 class ResponsiveText extends StatelessWidget {
   final String text;
@@ -14,6 +12,7 @@ class ResponsiveText extends StatelessWidget {
   final double? letterSpacing;
   final double? height;
   final VoidCallback? onTap;
+  final bool translate;
 
   const ResponsiveText({
     super.key,
@@ -27,16 +26,31 @@ class ResponsiveText extends StatelessWidget {
     this.letterSpacing,
     this.height,
     this.onTap,
+    this.translate = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    if (!translate) {
+      return _buildText(text);
+    }
+
+    final locale =
+        Get.locale?.languageCode ??
+        Localizations.localeOf(context).languageCode;
+    final rxText = TranslatorService.instance.watchTranslated(text, locale);
+
+    return Obx(() => _buildText(rxText.value));
+  }
+
+  Widget _buildText(String displayText) {
     final textWidget = Text(
-      text,
+      displayText,
       textAlign: textAlign,
       overflow: overflow,
       maxLines: maxLines,
-      style: GoogleFonts.inter(
+      style: TextStyle(
+        fontFamily: 'Lusail',
         fontSize: ScreenSize.setSp(fontSize),
         fontWeight: fontWeight ?? FontWeight.normal,
         color: color ?? Colors.black,
@@ -45,6 +59,19 @@ class ResponsiveText extends StatelessWidget {
             : null,
         height: height,
       ),
+
+      // -------If want to use custom font----------
+
+      // style: TextStyle(
+      //   fontFamily: 'Lusail',
+      //   fontSize: ScreenSize.setSp(fontSize),
+      //   fontWeight: fontWeight ?? FontWeight.normal,
+      //   color: color ?? Colors.black,
+      //   letterSpacing: letterSpacing != null
+      //       ? ScreenSize.setSp(letterSpacing!)
+      //       : null,
+      //   height: height,
+      // ),
     );
 
     if (onTap != null) {

@@ -1,80 +1,187 @@
 ﻿import 'dart:io';
-
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../exported_files/exported_file.dart';
 
-import 'package:b_potash/core/helpers/responsive/screen_size.dart';
-import 'package:b_potash/core/services/photo_picker_service/photo_picker_service.dart';
-import 'package:b_potash/core/themes/colors/app_colors.dart';
-import 'package:b_potash/core/wrappers/responsive_image.dart';
-
-/// Image picker field widget (shows dotted placeholder and optional fallback).
-class ImagePickerField extends StatefulWidget {
+class RImagePicker extends StatefulWidget {
+  final String? title;
   final double width;
   final double height;
   final BoxShape shape;
   final double borderRadius;
   final Function(File)? onImagePicked;
+  final Function(List<File>)? onMultipleImagesPicked;
+  final bool allowMultiple;
+  final bool isPreview;
 
   final String? fallbackImagePath;
   final double? fallbackImageHeight;
   final double? fallbackImageWidth;
 
-  const ImagePickerField({
+  const RImagePicker({
     super.key,
     required this.width,
     required this.height,
+    this.title,
     this.shape = BoxShape.rectangle,
     this.borderRadius = 0,
     this.onImagePicked,
+    this.onMultipleImagesPicked,
+    this.allowMultiple = false,
+    this.isPreview = true,
     this.fallbackImagePath,
     this.fallbackImageHeight,
     this.fallbackImageWidth,
   }) : assert(
-          (fallbackImagePath == null &&
-                  fallbackImageHeight == null &&
-                  fallbackImageWidth == null) ||
-              (fallbackImagePath != null &&
-                  fallbackImageHeight != null &&
-                  fallbackImageWidth != null),
-          'All fallback image properties (path, width, height) must be provided together.',
-        );
+         (fallbackImagePath == null &&
+                 fallbackImageHeight == null &&
+                 fallbackImageWidth == null) ||
+             (fallbackImagePath != null &&
+                 fallbackImageHeight != null &&
+                 fallbackImageWidth != null),
+         'All fallback image properties (path, width, height) must be provided together.',
+       );
 
   @override
-  State<ImagePickerField> createState() => _ImagePickerFieldState();
+  State<RImagePicker> createState() => _RImagePickerState();
 }
 
-class _ImagePickerFieldState extends State<ImagePickerField> {
-  final ValueNotifier<File?> _selectedImage = ValueNotifier<File?>(null);
+class _RImagePickerState extends State<RImagePicker> {
+  final ValueNotifier<List<File>> _selectedImages = ValueNotifier<List<File>>(
+    [],
+  );
 
   Future<void> _pickImage() async {
     final photoPicker = Get.find<PhotoPickerService>();
-    final file = await photoPicker.pickImageDialog(context);
+    final result = await photoPicker.pickImageDialog(
+      context,
+      allowMultiple: widget.allowMultiple,
+    );
 
-    if (file != null) {
-      _selectedImage.value = file;
-      widget.onImagePicked?.call(file);
+    if (result != null) {
+      if (widget.allowMultiple && result is List<File>) {
+        if (result.isNotEmpty) {
+          _selectedImages.value = [..._selectedImages.value, ...result];
+          widget.onMultipleImagesPicked?.call(_selectedImages.value);
+        }
+      } else if (result is File) {
+        _selectedImages.value = [result];
+        widget.onImagePicked?.call(result);
+      }
     }
+  }
+
+  void _removeImage(int index) {
+    final updated = List<File>.from(_selectedImages.value)..removeAt(index);
+    _selectedImages.value = updated;
+    widget.onMultipleImagesPicked?.call(updated);
+  }
+
+  void _clearImages() {
+    _selectedImages.value = [];
+    widget.onMultipleImagesPicked?.call([]);
   }
 
   @override
   void dispose() {
-    _selectedImage.dispose();
+    _selectedImages.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _pickImage,
-      child: ValueListenableBuilder<File?>(
-        valueListenable: _selectedImage,
-        builder: (context, file, _) {
-          return _buildFallbackOrIcon();
-        },
-      ),
+    return ValueListenableBuilder<List<File>>(
+      valueListenable: _selectedImages,
+      builder: (context, images, _) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(onTap: _pickImage, child: _buildPickerArea(images)),
+            if (widget.isPreview && images.isNotEmpty) ...[
+              ResponsiveSpace(8),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 1,
+                ),
+                itemCount: images.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: AppColors.secondaryTxtColor.withValues(
+                          alpha: 0.1,
+                        ),
+                        width: 1,
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(7),
+                          child: Image.file(
+                            images[index],
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Positioned(
+                          top: 4,
+                          right: 4,
+                          child: GestureDetector(
+                            onTap: () => _removeImage(index),
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                color: AppColors.whiteColor,
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: AppColors.blackColor.withValues(
+                                      alpha: 0.1,
+                                    ),
+                                    blurRadius: 4,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Icon(
+                                Icons.close,
+                                color: AppColors.secondaryTxtColor,
+                                size: 16,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+              ResponsiveSpace(8),
+              GestureDetector(
+                onTap: _clearImages,
+                child: ResponsiveText(
+                  text: 'Cancel',
+                  fontSize: 12,
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ],
+        );
+      },
     );
+  }
+
+  Widget _buildPickerArea(List<File> images) {
+    return _buildFallbackOrIcon();
   }
 
   Widget _buildFallbackOrIcon() {
@@ -87,41 +194,39 @@ class _ImagePickerFieldState extends State<ImagePickerField> {
           height: widget.fallbackImageHeight!,
         ),
       );
-    }
-
-    return DottedBorder(
-      color: Colors.grey.shade300,
-      strokeWidth: ScreenSize.setWidth(3),
-      dashPattern: [ScreenSize.setWidth(6), ScreenSize.setWidth(4)],
-      borderType:
-          widget.shape == BoxShape.circle ? BorderType.Circle : BorderType.RRect,
-      radius: Radius.circular(ScreenSize.setWidth(15)),
-      child: Container(
-        width: ScreenSize.setWidth(widget.width),
-        height: ScreenSize.setHeight(widget.height),
-        decoration: const BoxDecoration(color: Colors.transparent),
-        child: Center(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                Icons.add_photo_alternate_outlined,
-                color: Colors.grey.shade600,
-                size: ScreenSize.setSp(20),
-              ),
-              SizedBox(width: ScreenSize.setWidth(8)),
-              Text(
-                'Add image (optional)',
-                style: TextStyle(
-                  color: AppColors.secondaryTxtColor,
-                  fontSize: ScreenSize.setSp(14),
+    } else {
+      return DottedBorder(
+        color: Colors.grey.shade300,
+        strokeWidth: 3,
+        dashPattern: const [6, 4],
+        borderType: widget.shape == BoxShape.circle
+            ? BorderType.Circle
+            : BorderType.RRect,
+        radius: const Radius.circular(15),
+        child: Container(
+          width: widget.width,
+          height: widget.height,
+          decoration: const BoxDecoration(color: Colors.transparent),
+          child: Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.add_photo_alternate_outlined,
+                  color: Colors.grey.shade600,
+                  size: 20,
                 ),
-              ),
-            ],
+                const SizedBox(width: 8),
+                ResponsiveText(
+                  text: widget.title ?? 'Add images (optional)',
+                  color: AppColors.secondaryTxtColor,
+                  fontSize: 14,
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }
-

@@ -8,7 +8,6 @@ class AppBindings implements Bindings {
     Get.put(ApiClient(), permanent: true);
     Get.put(ApiService(), permanent: true);
     Get.put(PhotoPickerService(), permanent: true);
-    Get.put(UserProfileService(), permanent: true);
     Get.put(LocationService(), permanent: true);
   }
 }

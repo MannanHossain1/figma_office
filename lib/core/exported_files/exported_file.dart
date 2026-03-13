@@ -36,6 +36,7 @@ export 'package:b_potash/core/wrappers/expandable_text.dart';
 export 'package:b_potash/core/wrappers/ghost_button.dart';
 export 'package:b_potash/core/wrappers/dotted_line.dart';
 export 'package:b_potash/core/wrappers/image_picker_field.dart';
+export 'package:b_potash/core/wrappers/interactive_rating_widget.dart';
 export 'package:b_potash/core/wrappers/otp_field.dart';
 export 'package:b_potash/core/wrappers/responsive_button.dart';
 export 'package:b_potash/core/wrappers/responsive_checkbox.dart';
@@ -58,7 +59,6 @@ export 'package:b_potash/core/network/network_services/api_service.dart';
 
 // Core - services
 export 'package:b_potash/core/services/app_services/app_service.dart';
-export 'package:b_potash/core/services/app_services/user_profile_service.dart';
 export 'package:b_potash/core/services/debug_services/d_service.dart';
 export 'package:b_potash/core/services/location_services/location_service.dart';
 export 'package:b_potash/core/services/navigation_services/navigation_service.dart';

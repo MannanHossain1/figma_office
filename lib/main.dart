@@ -1,6 +1,6 @@
-import 'package:b_potash/app/b_potash.dart';
-import 'package:flutter/material.dart';
+import 'app/my_app.dart';
+import 'core/exported_files/exported_file.dart';
 
 void main() {
-  runApp(const BPotash());
+  runApp(const MyApp());
 }
