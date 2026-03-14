@@ -1,4 +1,4 @@
-import '../../../core/exported_files/exported_file.dart';
+import '../../../../core/exported_files/exported_file.dart';
 
 class SampleSectionTitle extends StatelessWidget {
   const SampleSectionTitle({super.key, required this.title});

@@ -1,4 +1,4 @@
-import '../../../core/exported_files/exported_file.dart';
+import '../../../../core/exported_files/exported_file.dart';
 import 'sample_section_title.dart';
 
 class SampleActionsShowcaseWidget extends StatefulWidget {

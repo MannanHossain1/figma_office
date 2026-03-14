@@ -1,5 +1,5 @@
 import '../exported_files/exported_file.dart';
-import '../../features/sample/screens/sample_screen.dart';
+import '../../features/sample/viewes/screens/sample_screen.dart';
 
 class AppRoutePages {
   AppRoutePages._();
