@@ -1,4 +1,4 @@
-﻿import 'package:b_potash/core/exported_files/exported_file.dart';
+import 'package:flutter_codebase/core/exported_files/exported_file.dart';
 
 /// Simple logging wrapper so you can swap logger implementation later.
 class DService {

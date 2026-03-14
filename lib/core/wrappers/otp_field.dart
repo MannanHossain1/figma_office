@@ -1,8 +1,8 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import 'package:b_potash/core/helpers/responsive/screen_size.dart';
-import 'package:b_potash/core/themes/colors/app_colors.dart';
+import 'package:flutter_codebase/core/helpers/responsive/screen_size.dart';
+import 'package:flutter_codebase/core/themes/colors/app_colors.dart';
 
 /// OTP input field wrapper.
 class OtpField extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:b_potash/core/utils/constants/app_colors.dart';
+import 'package:flutter_codebase/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

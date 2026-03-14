@@ -1,6 +1,6 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-import 'package:b_potash/core/helpers/responsive/screen_size.dart';
+import 'package:flutter_codebase/core/helpers/responsive/screen_size.dart';
 
 /// Responsive `GridView.builder` helper.
 class ResponsiveGridView extends StatelessWidget {

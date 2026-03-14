@@ -1,7 +1,7 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-import 'package:b_potash/core/themes/colors/app_colors.dart';
-import 'package:b_potash/core/wrappers/responsive_button.dart';
+import 'package:flutter_codebase/core/themes/colors/app_colors.dart';
+import 'package:flutter_codebase/core/wrappers/responsive_button.dart';
 
 class GhostButton extends StatelessWidget {
   const GhostButton({

@@ -1,8 +1,8 @@
-﻿import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter/material.dart';
 
-import 'package:b_potash/core/helpers/responsive/screen_size.dart';
-import 'package:b_potash/core/themes/colors/app_colors.dart';
+import 'package:flutter_codebase/core/helpers/responsive/screen_size.dart';
+import 'package:flutter_codebase/core/themes/colors/app_colors.dart';
 
 /// Global loader & toast helper configured to match app theme.
 class CustomLoader {

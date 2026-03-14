@@ -1,4 +1,4 @@
-﻿import 'package:b_potash/core/exported_files/exported_file.dart';
+import 'package:flutter_codebase/core/exported_files/exported_file.dart';
 
 class LocationService extends GetxService {
   Rx<Position?> currentPosition = Rx<Position?>(null);

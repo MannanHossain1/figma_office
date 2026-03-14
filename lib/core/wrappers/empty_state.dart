@@ -1,7 +1,7 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:b_potash/core/helpers/responsive/screen_size.dart';
+import 'package:flutter_codebase/core/helpers/responsive/screen_size.dart';
 
 /// Empty state widget for lists/screens.
 class EmptyState extends StatelessWidget {

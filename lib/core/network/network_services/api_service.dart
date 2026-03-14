@@ -1,6 +1,6 @@
-﻿import 'dart:convert';
+import 'dart:convert';
 
-import 'package:b_potash/core/exported_files/exported_file.dart';
+import 'package:flutter_codebase/core/exported_files/exported_file.dart';
 
 class ApiService extends GetxService {
   final ApiClient _client = Get.find<ApiClient>();

@@ -1,9 +1,9 @@
-﻿import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:b_potash/core/helpers/responsive/screen_size.dart';
-import 'package:b_potash/core/wrappers/responsive_container.dart';
-import 'package:b_potash/core/wrappers/responsive_image.dart';
+import 'package:flutter_codebase/core/helpers/responsive/screen_size.dart';
+import 'package:flutter_codebase/core/wrappers/responsive_container.dart';
+import 'package:flutter_codebase/core/wrappers/responsive_image.dart';
 
 /// Carousel slider wrapper for common app usage.
 class AppCarouselSlider extends StatefulWidget {

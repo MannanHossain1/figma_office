@@ -1,4 +1,4 @@
-﻿import 'package:b_potash/core/config/assets_paths/base_assets_path.dart';
+import 'package:flutter_codebase/core/config/assets_paths/base_assets_path.dart';
 
 class IconsAssetsPaths {
   IconsAssetsPaths._internal();

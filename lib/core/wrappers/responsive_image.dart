@@ -1,9 +1,9 @@
-﻿import 'dart:io';
+import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:b_potash/core/helpers/responsive/screen_size.dart';
+import 'package:flutter_codebase/core/helpers/responsive/screen_size.dart';
 
 class ResponsiveImage extends StatelessWidget {
   final String path;

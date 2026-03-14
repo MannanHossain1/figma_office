@@ -1,12 +1,12 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:b_potash/core/helpers/responsive/screen_size.dart';
-import 'package:b_potash/core/themes/colors/app_colors.dart';
-import 'package:b_potash/core/wrappers/responsive_container.dart';
-import 'package:b_potash/core/wrappers/responsive_icon.dart';
-import 'package:b_potash/core/wrappers/responsive_space.dart';
-import 'package:b_potash/core/wrappers/responsive_text.dart';
+import 'package:flutter_codebase/core/helpers/responsive/screen_size.dart';
+import 'package:flutter_codebase/core/themes/colors/app_colors.dart';
+import 'package:flutter_codebase/core/wrappers/responsive_container.dart';
+import 'package:flutter_codebase/core/wrappers/responsive_icon.dart';
+import 'package:flutter_codebase/core/wrappers/responsive_space.dart';
+import 'package:flutter_codebase/core/wrappers/responsive_text.dart';
 
 enum AppSnackPosition { top, center, bottom }
 

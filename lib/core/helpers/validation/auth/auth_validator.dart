@@ -1,4 +1,4 @@
-﻿import 'package:b_potash/core/helpers/validation/auth/auth_validation_constants.dart';
+import 'package:flutter_codebase/core/helpers/validation/auth/auth_validation_constants.dart';
 
 class AuthValidator {
   AuthValidator._();
@@ -44,7 +44,7 @@ class AuthValidator {
     final trimmed = age?.trim() ?? '';
     if (trimmed.isEmpty) return "Age cannot be empty.";
     if (!AuthValidationConstants.ageRegExp.hasMatch(trimmed)) {
-      return "Enter a valid age (1â€“120).";
+      return "Enter a valid age (1–120).";
     }
     return null;
   }
