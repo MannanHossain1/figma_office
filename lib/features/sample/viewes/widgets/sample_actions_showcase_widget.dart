@@ -1,26 +1,21 @@
 import '../../../../core/exported_files/exported_file.dart';
 import 'sample_section_title.dart';
-
 class SampleActionsShowcaseWidget extends StatefulWidget {
   const SampleActionsShowcaseWidget({super.key});
-
   @override
   State<SampleActionsShowcaseWidget> createState() =>
       _SampleActionsShowcaseWidgetState();
 }
-
 class _SampleActionsShowcaseWidgetState
     extends State<SampleActionsShowcaseWidget> {
   final ValueNotifier<bool> _isChecked = ValueNotifier<bool>(false);
   final RxBool _isNotificationEnabled = false.obs;
-
   @override
   void dispose() {
     _isChecked.dispose();
     _isNotificationEnabled.close();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Column(

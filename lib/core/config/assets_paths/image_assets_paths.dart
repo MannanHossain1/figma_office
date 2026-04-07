@@ -6,4 +6,5 @@ class ImageAssetsPaths {
   static final String appLogo = BaseAssetsPath.imagePath("app_logo.png");
   static final String logo = BaseAssetsPath.imagePath("logo.png");
   static final String userProfile = BaseAssetsPath.imagePath("user_profile.png");
+  static final String success = BaseAssetsPath.imagePath("success.png");
 }

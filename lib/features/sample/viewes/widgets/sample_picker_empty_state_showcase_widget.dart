@@ -1,9 +1,7 @@
 import '../../../../core/exported_files/exported_file.dart';
 import 'sample_section_title.dart';
-
 class SamplePickerEmptyStateShowcaseWidget extends StatelessWidget {
   const SamplePickerEmptyStateShowcaseWidget({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(

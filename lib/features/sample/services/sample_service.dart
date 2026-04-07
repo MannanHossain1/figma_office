@@ -90,14 +90,12 @@ class SampleService extends GetxService {
     DService().error("Update failed: ${response.message}");
     return false;
   }
-
   /// Delete item
   /// DELETE /sample-endpoint/{id}
   Future<bool> delete(String id) async {
     final response = await _apiService.deleteData(
       url: ApiEndpoint.sampleById(id),
     );
-
     if (response.isSuccess) {
       DService().info("Deleted successfully");
       return true;

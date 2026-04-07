@@ -1,5 +1,4 @@
 import '../../../../core/exported_files/exported_file.dart';
-
 class EmptyMessage extends StatelessWidget {
   const EmptyMessage({
     super.key,

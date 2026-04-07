@@ -1,6 +1,5 @@
 import 'package:flutter_codebase/core/exported_files/exported_file.dart';
 import 'package:flutter_codebase/features/common/views/widgets/app_bar_back_button.dart';
-
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CommonAppBar({
     super.key,
@@ -13,7 +12,6 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.translateTitle = false,
     this.translateSubtitle = false,
   });
-
   final bool isLeading;
   final String title;
   final String? subtitle;
@@ -22,7 +20,6 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? rightWidget;
   final bool translateTitle;
   final bool translateSubtitle;
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -71,11 +68,9 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
   Widget _buildBackButton() {
     return AppBarBackButton(onTapBack: onTapBack);
   }
-
   @override
   Size get preferredSize => const Size.fromHeight(56);
 }

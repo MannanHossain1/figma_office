@@ -28,13 +28,11 @@ class ResponsiveText extends StatelessWidget {
     this.onTap,
     this.translate = false,
   });
-
   @override
   Widget build(BuildContext context) {
     if (!translate) {
       return _buildText(text);
     }
-
     final locale =
         Get.locale?.languageCode ??
         Localizations.localeOf(context).languageCode;
@@ -42,7 +40,6 @@ class ResponsiveText extends StatelessWidget {
 
     return Obx(() => _buildText(rxText.value));
   }
-
   Widget _buildText(String displayText) {
     final textWidget = Text(
       displayText,

@@ -2,7 +2,6 @@ import 'package:flutter_codebase/core/global_widgets/custom_text.dart';
 import 'package:flutter_codebase/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 class CustomTextfield extends StatelessWidget {
   final Color? fillColor;
   final String? hintText;
@@ -28,17 +27,15 @@ class CustomTextfield extends StatelessWidget {
     this.textController,
     this.validator,
   });
-
   OutlineInputBorder _outlineInputBorder() {
     return OutlineInputBorder(
-      borderRadius: .circular(15),
+      borderRadius: BorderRadius.circular(25),
       borderSide: BorderSide(
         color: AppColors.textSecondary.withValues(alpha: .4),
         width: 1,
       ),
     );
   }
-
   InputDecoration _inputDecoration() {
     return InputDecoration(
       filled: true,
@@ -48,7 +45,7 @@ class CustomTextfield extends StatelessWidget {
       hintStyle: GoogleFonts.inter(
         color: AppColors.textSecondary.withValues(alpha: .34),
         fontSize: 14,
-        fontWeight: .w300,
+        fontWeight: FontWeight.w300,
       ),
       suffixIcon: suffixWidget,
       border: _outlineInputBorder(),
@@ -59,27 +56,29 @@ class CustomTextfield extends StatelessWidget {
       focusedErrorBorder: _outlineInputBorder(),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: Column(
-        crossAxisAlignment: .start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomText(
-            text: headertext,
-            color: AppColors.textThird,
-            fontSize: 16,
-            fontWeight: .w500,
-          ),
-          SizedBox(height: 8),
+          if (headertext.isNotEmpty) ...[
+            CustomText(
+              text: headertext,
+              color: AppColors.textThird,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+            const SizedBox(height: 8),
+          ],
           TextFormField(
             controller: textController,
-            obscureText: isObscure!,
+            obscureText: isObscure ?? false,
             decoration: _inputDecoration(),
             validator: validator,
           ),
+          const SizedBox(height: 16),
         ],
       ),
     );

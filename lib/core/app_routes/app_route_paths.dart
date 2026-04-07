@@ -10,5 +10,7 @@ class AppRoutePaths {
   static const String createNewPasswordScreen = "/create_new_password_screen";
   static const String mainBottomNavScreen = "/main_bottom_nav_screen";
   static const String homeScreen = "/home_screen";
-  
+  static const String verificationScreen = "/verification_screen";
+  static const String signInScreen = "/Sign_in_screen";
+
 }

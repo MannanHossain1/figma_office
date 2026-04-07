@@ -1,9 +1,7 @@
 class SampleModel {
   SampleMeta? meta;
   List<SampleData>? data;
-
   SampleModel({this.meta, this.data});
-
   factory SampleModel.fromJson(Map<String, dynamic> json) => SampleModel(
         meta: json['meta'] != null
             ? SampleMeta.fromJson(json['meta'])
@@ -14,41 +12,31 @@ class SampleModel {
               )
             : null,
       );
-
   Map<String, dynamic> toJson() {
     return {
       'meta': meta?.toJson(),
       'data': data?.map((x) => x.toJson()).toList(),
-    };
-  }
-}
-
+    };}}
 // need for paginations
 class SampleMeta {
   int? page;
   int? limit;
   int? total;
   int? totalPage;
-
   SampleMeta({this.page, this.limit, this.total, this.totalPage});
-
   factory SampleMeta.fromJson(Map<String, dynamic> json) => SampleMeta(
         page: json['page'] as int?,
         limit: json['limit'] as int?,
         total: json['total'] as int?,
         totalPage: json['totalPage'] as int?,
       );
-
   Map<String, dynamic> toJson() {
     return {
       'page': page,
       'limit': limit,
       'total': total,
       'totalPage': totalPage,
-    };
-  }
-}
-
+    };}}
 class SampleData {
   String? id;
   String? name;
@@ -60,7 +48,6 @@ class SampleData {
   List<String>? images;
   String? createdAt;
   String? updatedAt;
-
   SampleData({
     this.id,
     this.name,
@@ -73,7 +60,6 @@ class SampleData {
     this.createdAt,
     this.updatedAt,
   });
-
   factory SampleData.fromJson(Map<String, dynamic> json) => SampleData(
         id: json['id'] as String?,
         name: json['name'] as String?,
@@ -87,7 +73,6 @@ class SampleData {
         createdAt: json['createdAt'] as String?,
         updatedAt: json['updatedAt'] as String?,
       );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -102,5 +87,4 @@ class SampleData {
       'updatedAt': updatedAt,
     };
   }
-
 }
